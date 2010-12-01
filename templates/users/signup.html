@@ -2,5 +2,14 @@
 
 {% block content %}
   <h1>User registration</h1>
-  <p>Hello, world !</p>
+  <form action="/users/signup/" method="post">
+    {% csrf_token %}
+    <label for="name">Pseudo : </label>
+      <input type="text" id="name" name="name" /><br />
+    <label for="password">Password : </label>
+      <input type="password" id="password" name="password" /><br />
+    <label for="password2">Password bis : </label>
+      <input type="password" id="password2" name="password2" /><br />
+    <input type="submit" value="signup" />
+  </form>
 {% endblock %}
