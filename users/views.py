@@ -41,6 +41,7 @@ def login(request):
             login_auth(request, user)
             # Redirect to a success page.
             return HttpResponseRedirect('success/')
+            #lol
     else:
         form = LoginForm()
 
