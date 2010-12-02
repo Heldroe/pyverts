@@ -1,5 +1,3 @@
-
-
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
@@ -7,7 +5,7 @@ from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as login_auth
 
-
+from models import Profile
 from forms import SignupForm,LoginForm
 
 def index(request):
@@ -22,6 +20,8 @@ def signup(request):
         if form.is_valid():
             user = User.objects.create_user(form.cleaned_data['name'],"",form.cleaned_data['password'])
             user.save()
+            profile = Profile(user=user)
+            profile.save()
             return HttpResponseRedirect('success/')
     else:
         form = SignupForm()

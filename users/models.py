@@ -5,6 +5,6 @@ class Profile(models.Model):
     user = models.ForeignKey(User, unique=True)
 
     # cars = models.ManyToManyField(Car)
-    karma = models.IntegerField()
+    karma = models.IntegerField(default=0)
     # itinaries = models.ManyToManyField(Itinary)
     # ratings = models.ManyToManyField(Rating)
