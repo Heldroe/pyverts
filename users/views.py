@@ -14,6 +14,9 @@ def index(request):
 def signup_success(request):
     return render_to_response('users/signup_success.html')
 
+def login_success(request):
+    return render_to_response('users/login_success.html')
+
 def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -38,6 +41,7 @@ def login(request):
             login_auth(request, user)
             # Redirect to a success page.
             return HttpResponseRedirect('success/')
+            #lol
     else:
         form = LoginForm()
 
