@@ -17,6 +17,8 @@ def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
+            user = User.objects.create_user(form.cleaned_data['name'], form.cleaned_data['password'])
+            user.save()
             return HttpResponseRedirect('success/')
     else:
         form = SignupForm()

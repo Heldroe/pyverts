@@ -30,3 +30,5 @@ class SignupForm(forms.Form):
                 del cleaned_data["password2"]
         return cleaned_data
 
+#class LoginForm(forms.Form):
+
