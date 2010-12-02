@@ -5,6 +5,8 @@ AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+LOGIN_URL = '/users/login/'
+
 AUTH_PROFILE_MODULE = "users.Profile"
 
 ADMINS = (
