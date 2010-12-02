@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 
 
 from forms import SignupForm,LoginForm
