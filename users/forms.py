@@ -27,11 +27,14 @@ class SignupForm(forms.Form):
         password2 = cleaned_data.get("password2")
         if password and password2:
             if password != password2:
-                msg = 'Passwords must be the same'
+                msg = 'Les mots de pass doivent être les mêmes'
                 self._errors["password"] = self.error_class([msg])
                 self._errors["password2"] = self.error_class([msg])
-                del cleaned_data["password"]
-                del cleaned_data["password2"]
+            if User.objects.filter(username=cleaned_data.get("name")) :
+                msg = 'Cet utilisateur existe déjà'
+                self._errors["name"] = self.error_class([msg])
+#                del cleaned_data["password"]
+#                del cleaned_data["password2"]
         return cleaned_data
 
 class LoginForm(forms.Form):
