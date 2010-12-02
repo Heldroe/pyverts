@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login as login_auth
 
 
 from forms import SignupForm,LoginForm
@@ -20,7 +20,7 @@ def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
-            user = User.objects.create_user(form.cleaned_data['name'], form.cleaned_data['password'])
+            user = User.objects.create_user(form.cleaned_data['name'],"",form.cleaned_data['password'])
             user.save()
             return HttpResponseRedirect('success/')
     else:
@@ -35,7 +35,7 @@ def login(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             user = authenticate(username=form.cleaned_data['name'], password=form.cleaned_data['password'])
-            login(request, user)
+            login_auth(request, user)
             # Redirect to a success page.
             return HttpResponseRedirect('success/')
     else:
