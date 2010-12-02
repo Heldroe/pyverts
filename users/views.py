@@ -14,6 +14,9 @@ def index(request):
 def signup_success(request):
     return render_to_response('users/signup_success.html')
 
+def lol(request):
+    return HttpResponse("LOL!")
+
 def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
