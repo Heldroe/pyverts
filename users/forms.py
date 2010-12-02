@@ -48,10 +48,11 @@ class LoginForm(forms.Form):
         cleaned_data = self.cleaned_data
         user = authenticate(username=cleaned_data.get("name"), password=cleaned_data.get("password"))
         if user is None or not user.is_active:
-            msg = 'Vous n\'existez pas.'
             if user is None :
-                msg = 'Vous n\'existez pas ! ! !'
+                msg = 'Identification incorrecte.'
+            elif not user.is_active:
+                msg = 'Vous êtes désactivé.'
             self._errors["name"] = self.error_class([msg])
-            del cleaned_data["name"]
-            del cleaned_data["password"]
+#            del cleaned_data["name"]
+#            del cleaned_data["password"]
         return cleaned_data

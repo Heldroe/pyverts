@@ -5,5 +5,6 @@ urlpatterns = patterns('users.views',
     (r'^signup/$', 'signup'),
     (r'^login/$', 'login'),
     (r'^signup/success/$', 'signup_success'),
+    (r'^login/success/$', 'signup_success'),
 
 )

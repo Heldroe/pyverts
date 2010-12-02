@@ -1,7 +1,7 @@
 # Django settings for pyverts project.
 import os
 PROJECT_DIR = os.path.dirname(__file__)
-
+AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
