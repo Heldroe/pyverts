@@ -2,33 +2,28 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
+from django.contrib.auth.models import User
+
+
+from forms import SignupForm
 
 def index(request):
-  return HttpResponse("Index file !")
+    return HttpResponse("Index file !")
+
+def signup_success(request):
+    return render_to_response('users/signup_success.html')
 
 def signup(request):
-  try:
-    name = request.POST['name']
-  except KeyError:
-    return render_to_response('users/signup.html', {
-        'err_msg': "You must set a name"},
-        context_instance=RequestContext(request)
-        )
-  try:
-    password = request.POST['password']
-    password2 = request.POST['password2']
-  except KeyError:
-    return render_to_response('users/signup.html', {
-        'err_msg': "You must set a password"},
-        context_instance=RequestContext(request)
-        )
-  else:
-    if password != password2:
-      return render_to_response('users/signup.html', {
-          'err_msg': "Passwords must be the same"},
-          context_instance=RequestContext(request)
-          )
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            user = User.objects.create_user(form.cleaned_data['name'], form.cleaned_data['password'])
+            user.save()
+            return HttpResponseRedirect('success/')
     else:
-      return render_to_response('users/signup_success.html')
-  return render_to_response('users/signup.html')
+        form = SignupForm()
+
+    return render_to_response('users/signup.html',
+            {'form': form},
+            context_instance=RequestContext(request))
 
