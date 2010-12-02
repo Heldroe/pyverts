@@ -2,6 +2,19 @@
 
 {% block content %}
   <h1>List of itineraries</h1>
-    {% csrf_token %}
-    {{ index }}
+  <table><thead><tr>
+    <th id="depart">Lieu de départ</th>
+    <th id="arrival">Lieu d'arrivée</th>
+    <th id="hour">Heure de Départ</th>
+    <th id="disp">Heure de Départ</th></tr></thead>
+    <tbody>
+{% for itinerary in itineraries %}
+  <tr> <td header="depart">{{itinerary.depart}}</td>
+       <td header="arrival">{{itinerary.arrival}}</td>
+       <td header="hour">{{itinerary.depart_hour}}</td>
+       <td header="disp">{{itinerary.car.places}}</td>
+       </tr>
+{% endfor %}
+</tbody>
+</table>
 {% endblock %}

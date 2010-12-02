@@ -6,5 +6,5 @@ from django.template import RequestContext
 from itinerary.models import Itinerary
 
 def trajet_index(request):
-  index = Itinerary.objects.all()
-  return render_to_response('itinerary/trajet_index.html', {'index': index})
+  itineraries = Itinerary.objects.all()
+  return render_to_response('itinerary/trajet_index.html', {'itineraries': itineraries})
