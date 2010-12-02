@@ -3,4 +3,4 @@
 *.pyc
 *~
 *.swp
-*db.sqlite
+*.sqlite
