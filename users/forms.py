@@ -68,7 +68,7 @@ class ProfileForm(ModelForm):
     last_name = forms.CharField(min_length=2, max_length=100, required=False,
         error_messages={'min_length': 'Minimal length : 2 chars',
                         'max_length': 'Maximal length : 100 chars'})
-    phone = forms.RegexField(regex='^0[1-8]([-. ]?[0-9]{2}){4}$', required=False,
+    phone = forms.RegexField(regex='^0[1-9]([-. ]?[0-9]{2}){4}$', required=False,
         error_messages={'invalid': 'Format incorrect'})
     place = forms.CharField(max_length=300, required=False,
         error_messages={'max_length': 'Taille maximale : 300 caractères'})
