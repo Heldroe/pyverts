@@ -94,11 +94,19 @@ def add_car(request):
     if request.method == 'POST':
         form = NewCarForm(request.POST, instance=car)
         if form.is_valid():
-            print form
-            print car
+            car.save()
+            request.user.get_profile().cars.add(car)
+            print car.essence_type
+            return HttpResponseRedirect('/users/edit_cars/')
     else:
         form = NewCarForm(instance=car)
-    return render_to_response('users/add_car.html', {'form': form})
+    return render_to_response('users/add_car.html', {'form': form},
+            context_instance=RequestContext(request))
+
+@login_required
+def delete_car(request):
+    return HttpResponse("deleting car")
+
 
 def view_profile(request, profile_id):
     p = get_object_or_404(Profile, pk=profile_id)

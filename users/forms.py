@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django import forms
+from django.conf import settings
 from django.forms import ModelForm
 from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate
@@ -94,8 +95,7 @@ class NewCarForm(ModelForm):
                         'min_value': 'La consommation minimale est de 2L/100km',
                         'required': 'Vous devez définir une consommation en litres par 100km'})
 
-    types = ('Diesel', 'SP98', 'SP95', 'Super', 'Hybride', 'Solaire', 'Fusion nucléaire')
-    essence_type = forms.ChoiceField(choices=types,required=True,
+    essence_type = forms.ChoiceField(choices=settings.ESSENCE_TYPES,required=True,
         error_messages={'required': 'Vous devez choisir un type d\'essence',
                         'invalid_choice': 'Vous devez choisir un élément de la liste'})
     class Meta:
