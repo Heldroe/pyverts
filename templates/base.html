@@ -8,22 +8,26 @@
   </head>
   <body>
     <div id="header">
-      <ul>
-        <li><a href="/users/signup">S'inscrire</a> - <a href="/users/login">Se connecter</a></li>
-          <li><a href="/users/signup">Chercher un utilisateur</a></li>
-          <li>[][loupe]</li>
+      <ul id="nav">
+
+        <li><a href="/users/login">Connection</a></li>
+        <li><a href="/users/signup">Inscription</a></li>
+        <li><a href="#">Chercher un utilisateur</a></li>
+        <li class="search"><label><input type="search" name="q" class="searchtext"  accesskey="s"></label></li>
       </ul> 
+
       <div id="banniere"></div>
     </div>
+    
     <div id="body">
       {% block content %}{% endblock %}
     </div>
     <div id="footer">
       <ul>
-        <li><a href="/plan">Plan du site</a>
-        <li><a href="/mentions">Mentions légales</a>
-        <li><a href="/contact">Contact</a>
-        <li><a href="/convoiturage">Qu'est-ce que le convoiturage ?</a>
+        <li><a href="/plan" title="Plan du site">Plan du site</a></li>
+        <li><a href="/mentions" title="Mentions légales">Mentions légales</a></li>
+        <li><a href="/contact" title="Contact">Contact</a></li>
+        <li><a href="/convoiturage" title="Qu'est-ce que le convoiturage ?">Qu'est-ce que le convoiturage ?</a></li>
       </ul>
     </div>
     <a href="http://www.w3.org/WAI/WCAG1AAA-Conformance"
@@ -32,6 +36,5 @@
           src="http://www.w3.org/WAI/wcag1AAA"
           alt="Level Triple-A conformance icon, 
           W3C-WAI Web Content Accessibility Guidelines 1.0"></a>
-
   </body>
 </html>

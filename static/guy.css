@@ -1,7 +1,8 @@
 body{
   width:1000px;
-  margin:auto;
-  background-color:#e3e3e3;
+  background-color:#99FF99;
+  
+  
 }
 a{
   color:#222222;
@@ -17,6 +18,24 @@ a:hover{
   background-color:#e6e6e6;
   -moz-border-radius: 5px;
 }
+
+#banniere{
+	background:url(ban.png) no-repeat;
+	width:1000px;
+	height:200px;
+	padding-left:0px;
+	margin-left:0px;
+	
+}
+
+#compt{
+	width: 90px;
+	height:200px;
+	margin-left: 810px;
+	background-color:#000;
+}
+
+
 #footer{
   margin:auto;
   width:670px;
