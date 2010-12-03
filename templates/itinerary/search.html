@@ -1,14 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>List of itineraries</h1>
-  <table><thead><tr>
+  <h1>Recherche d'itinéraire</h1>
+  <form action="search.html" method="post">
+  <label for="depart">Départ : </label><input type="text" name="depart" value=""/><br />
+  <label for="arrive">Arrivé : </label><input type="text" name="arrive" value=""/>
+  <input type="submit" value="Chercher" />
+  </form>
+<!--<table border="1"><thead><tr>
     <th id="depart">Lieu de départ</th>
     <th id="arrival">Lieu d'arrivée</th>
     <th id="hour">Heure de Départ</th>
     <th id="disp">Places disponibles</th>
-    <th id="cost">Prix du voyage</th>
-    <th id="link">Fiche détaillée</th></tr></thead>
+    <th id="cost">Prix du voyage</th></tr></thead>
     <tbody>
 {% for itinerary in itineraries %}
   <tr> <td header="depart">{{itinerary.depart}}</td>
@@ -16,9 +20,8 @@
        <td header="hour">{{itinerary.depart_hour}}</td>
        <td header="disp">{{itinerary.available_seats}}</td>
        <td header="cost">{{itinerary.itinerary_cost}}</td>
-       <td header="link"><a href="sheet_itinerary/{{itinerary.id}}">Accéder à la fiche</a></td>
        </tr>
 {% endfor %}
 </tbody>
-</table>
+</table>-->
 {% endblock %}
