@@ -168,13 +168,13 @@ html[xmlns] #nav {
 	background-image:url(search.png);
 	background-repeat: no-repeat;
 	
+	
 	display: block;
 	margin-top: 5px;
+	margin-left: 300px;
 	padding-left: 20px;
 	-webkit-border-radius: 9px;
 	-moz-border-radius: 9px;
-	border-radius: 10px;
-
-	
-	
+	border-radius: 10px;	
 }
+
