@@ -2,18 +2,18 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
+from django.conf import settings
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as login_auth
 from models import Profile
 from cars.models import Car
-from forms import SignupForm,LoginForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_auth
 from django.contrib.auth import logout as logout_auth
 from django.utils.datastructures import MultiValueDictKeyError
 from models import Profile
-from forms import SignupForm, LoginForm, ProfileForm
+from forms import SignupForm, LoginForm, ProfileForm, NewCarForm
 from django.contrib.auth.decorators import login_required
 
 def index(request):
@@ -86,18 +86,36 @@ def edit_profile(request):
 @login_required
 def edit_cars(request):
     cars = request.user.get_profile().cars.all()
+    for i in range(len(cars)):
+        #cars[i].ess_type = settings.ESSENCE_TYPES[cars[i].essence_type]
+        cars[i].ess_type = settings.ESSENCE_TYPES[int(cars[i].essence_type)][1]
     return render_to_response('users/edit_cars.html',
             {'cars': cars})
 
 @login_required
 def add_car(request):
+    car = Car()
     if request.method == 'POST':
-        car = Car()
         form = NewCarForm(request.POST, instance=car)
         if form.is_valid():
-            print form
-            print car
-    return HttpResponse("Logged out")
+            car.save()
+            request.user.get_profile().cars.add(car)
+            print car.essence_type
+            return HttpResponseRedirect('/users/edit_cars/')
+    else:
+        form = NewCarForm(instance=car)
+    return render_to_response('users/add_car.html', {'form': form},
+            context_instance=RequestContext(request))
+
+@login_required
+def delete_car(request, car_id):
+    try:
+        car = request.user.get_profile().cars.get(id=car_id)
+        car.delete()
+    except DoesNotExist:
+        pass
+    return HttpResponseRedirect('/users/edit_cars/')
+
 
 def view_profile(request, profile_id):
     p = get_object_or_404(Profile, pk=profile_id)

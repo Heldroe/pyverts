@@ -4,7 +4,11 @@
   <h1>Vos voitures</h1>
   <ul>
   {% for car in cars %}
-    <li>{{ car.model }}</li>
+  <li>
+    {{ car.model }}
+    ({{ car.places }} places, {{ car.ess_type }}, {{ car.consumption }}L/100km)
+    [<a href="/users/edit_cars/delete/{{ car.id }}/">Supprimer</a>]
+  </li>
   {% endfor %}
   </ul>
   <a href="/users/edit_cars/add/">Ajouter une voiture</a>

@@ -11,7 +11,9 @@ a {
 }
 #nav {
 	margin: 0;
+	
 	padding: 7px 6px 0;
+	margin-left: 20%;
 	background: #7d7d7d url(gradient.png) repeat-x 0 -110px;
 	line-height: 100%;
 
@@ -95,7 +97,7 @@ a {
 	padding: 0;
 	width: 185px;
 	position: absolute;
-	top: 35px;
+	top: 10px;
 	left: 0;
 	background: #ddd url(gradient.png) repeat-x 0 0;
 	border: solid 1px #b4b4b4;
@@ -162,7 +164,7 @@ html[xmlns] #nav {
 }
 
 
-input{
+.searchtext{
 	background-image:url(search.png);
 	background-repeat: no-repeat;
 	

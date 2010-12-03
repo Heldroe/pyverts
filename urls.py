@@ -11,6 +11,10 @@ urlpatterns = patterns('django.views.generic.simple',
     (r'^users/', include('users.urls')),
     (r'^itinerary/', include('itinerary.urls')),
     (r'^$', 'direct_to_template', {'template': 'index.html'}),
+    (r'^plan/', 'direct_to_template', {'template': 'plan.html'}),
+    (r'^mentions/', 'direct_to_template', {'template': 'mentions_legales.html'}),
+    (r'^contact/', 'direct_to_template', {'template': 'contact.html'}),
+    (r'^convoiturage/', 'direct_to_template', {'template': 'convoiturage.html'}),
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
