@@ -4,15 +4,38 @@
   <h1>Profil de {{ profile.user }}</h1>
     {% csrf_token %}
     <ul>
+    <li>Prénom : {{ profile.first_name }}</li>
+    <li>Nom : {{ profile.last_name }}</li>
+    <li>Num. tel. : {{ profile.phone }}</li>
+    <li>Adresse : {{ profile.place }}</li>
     <li>Karma : {{ profile.karma }}</li>
     <li>Voitures : </li>
-      {% for car in profile.carss.all %}
-	      {% if not forloop.last %}
-	            {{ car.name }},
-	      {% else %}
-	            {{ car.name }}
-	      {% endif %}
+          <ul>
+          {% for car in profile.cars.all %}
+	                <li>Modèle : {{ car.model }}</li>
+	                <li>Places : {{ car.places }}</li>
+	                <li>Consommation : {{ car.consumption }}L/100km</li>
+	                <li>Type d'essence : {{ car.essence_type }}<br /></li>
+          {% endfor %}
+          </ul>
+    {% if profile.itineraries.all %}
+    <li>Itinéraires : </li>
+      <ul>
+      {% for iti in profile.itineraries.all %}
+	            <li>Départ : <a href="">Itinéraire {{ iti.id }}</a></li>
       {% endfor %}
-    
+      </ul>
+      {% else %}
+        <p>Il n'y a pas encore d'itinéraires.</p>
+    {% endif %}
+     {% if profile.evaluations.all %}
+    <li>&Eacute;valuations : </li>
+      {% for eval in profile.evaluations.all %}
+	            <strong>{{ eval.evaluator }} - {{ eval.itinerary }}</strong>, {{ eval.mark }}
+	            <p>{{ eval.comments }}</p>
+      {% endfor %}
+    {% else %}
+        <p>Il n'y a pas encore d'évaluations.</p>
+    {% endif %}
     </ul>
 {% endblock %}

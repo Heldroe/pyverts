@@ -86,5 +86,5 @@ def edit_profile(request):
             
 def view_profile(request, profile_id):
     p = get_object_or_404(Profile, pk=profile_id)
-    p.cars.add();
-    return render_to_response('users/profile.html', {'profile': p, 'lol' : p.cars})
+    
+    return render_to_response('users/profile.html', {'profile': p, 'lol' : p.cars.all()})
