@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from users.models import Profile
 from cars.models import Car
+from itinerary.models import Itinerary
 
 class SignupForm(forms.Form):
     name = forms.CharField(min_length=2, max_length=50, required=True,
@@ -101,3 +102,21 @@ class NewCarForm(ModelForm):
     class Meta:
         model = Car
         fields = ('model', 'places', 'consumption', 'essence_type', 'accessibility')
+
+class NewItineraryForm(ModelForm):
+    depart = forms.CharField(required=True, min_length=2, max_length=200,
+        error_messages={'required': 'Vous devez définir un lieu de départ',
+                        'min_length': 'Le lieu doit faire au moins 2 caractères',
+                        'max_length': 'Le lieu doit faire au maximum 200 caractères'})
+    arrival = forms.CharField(required=True, min_length=2, max_length=200,
+        error_messages={'required': 'Vous devez définir un lieu d\'arrivée',
+                        'min_length': 'Le lieu doit faire au moins 2 caractères',
+                        'max_length': 'Le lieu doit faire au maximum 200 caractères'})
+    depart_hour = forms.CharField(required=True, min_length=10, max_length=100,
+        error_messages={'required': 'Vous devez définir une date de départ',
+                        'min_length': 'La date doit faire au moins 10 caractères',
+                        'max_length': 'La date ne doit pas dépasser 100 caractères'})
+
+    class Meta:
+        model = Itinerary
+        fields = ('depart', 'arrival', 'depart_hour', 'reserved_seats', 'itinerary_cost')
