@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Profil de {{ profile.user }}</h1>
+    {% csrf_token %}
+    <ul>
+    <li>Karma : {{ profile.karma }}</li>
+    <li>Voitures : </li>
+      {% for car in profile.carss.all %}
+	      {% if not forloop.last %}
+	            {{ car.name }},
+	      {% else %}
+	            {{ car.name }}
+	      {% endif %}
+      {% endfor %}
+    
+    </ul>
+{% endblock %}

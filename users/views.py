@@ -1,11 +1,11 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as login_auth
-
 from models import Profile
+from cars.models import Car
 from forms import SignupForm,LoginForm
 
 def index(request):
@@ -41,11 +41,14 @@ def login(request):
             login_auth(request, user)
             # Redirect to a success page.
             return HttpResponseRedirect('success/')
-            #lol
     else:
         form = LoginForm()
 
     return render_to_response('users/login.html',
             {'form': form},
             context_instance=RequestContext(request))
-
+            
+def view_profile(request, profile_id):
+    p = get_object_or_404(Profile, pk=profile_id)
+    p.cars.add();
+    return render_to_response('users/profile.html', {'profile': p, 'lol' : p.cars})
