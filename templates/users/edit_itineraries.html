@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Vous avez créé les itinéraires suivants :</h1>
+  <ul>
+  {% for itinerary in itineraries %}
+  <li>
+    {{ itinerary.depart }} =&gt; {{ itinerary.arrival }}
+  </li>
+  {% endfor %}
+  </ul>
+  <a href="/users/edit_itineraries/add/">Créer un itinéraire</a>
+{% endblock %}

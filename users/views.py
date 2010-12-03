@@ -13,8 +13,9 @@ from django.contrib.auth import login as login_auth
 from django.contrib.auth import logout as logout_auth
 from django.utils.datastructures import MultiValueDictKeyError
 from models import Profile
-from forms import SignupForm, LoginForm, ProfileForm, NewCarForm
+from forms import SignupForm, LoginForm, ProfileForm, NewCarForm, NewItineraryForm
 from django.contrib.auth.decorators import login_required
+from itinerary.models import Itinerary
 
 def index(request):
     return HttpResponse("Index file !")
@@ -94,6 +95,26 @@ def edit_cars(request):
             {'cars': cars})
 
 @login_required
+def edit_itineraries(request):
+    itineraries = Itinerary.objects.filter(driver=request.user)
+    return render_to_response('users/edit_itineraries.html',
+            {'itineraries': itineraries})
+
+@login_required
+def add_itinerary(request):
+    trip = Itinerary()
+    if request.method == 'POST':
+        form = NewItineraryForm(request.POST, instance=trip)
+        if form.is_valid():
+            trip.driver = request.user
+            trip.save()
+            return HttpResponseRedirect('/users/edit_itineraries/')
+    else:
+        form = NewItineraryForm(instance=trip)
+    return render_to_response('users/add_itinerary.html', {'form': form},
+            context_instance=RequestContext(request))
+
+@login_required
 def add_car(request):
     car = Car()
     if request.method == 'POST':
@@ -101,7 +122,6 @@ def add_car(request):
         if form.is_valid():
             car.save()
             request.user.get_profile().cars.add(car)
-            print car.accessibility
             return HttpResponseRedirect('/users/edit_cars/')
     else:
         form = NewCarForm(instance=car)
@@ -116,6 +136,7 @@ def delete_car(request, car_id):
     except DoesNotExist:
         pass
     return HttpResponseRedirect('/users/edit_cars/')
+
 
 
 def view_profile(request, profile_id):
