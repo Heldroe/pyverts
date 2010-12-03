@@ -4,18 +4,25 @@ body{
   background-color:#e3e3e3;
 }
 a{
-  color:#000000;
+  color:#222222;
   text-decoration:none;
+}
+a:hover{
+  color:#555555;
 }
 #body{
   margin:10px;
   padding:2px;
-  border: 1px solid #222222;
+  border: 1px solid #d9d9d9;
+  background-color:#e6e6e6;
   -moz-border-radius: 5px;
 }
 #footer{
   margin:auto;
-  width:700px;
+  width:670px;
+  border: 1px solid #dedede;
+  -moz-border-radius: 5px;
+  background-color:#e6e6e6;
 }
 #footer ul{
   display:inline;
