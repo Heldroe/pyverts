@@ -7,13 +7,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as login_auth
 from models import Profile
 from cars.models import Car
-from forms import SignupForm,LoginForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_auth
 from django.contrib.auth import logout as logout_auth
 from django.utils.datastructures import MultiValueDictKeyError
 from models import Profile
-from forms import SignupForm, LoginForm, ProfileForm
+from forms import SignupForm, LoginForm, ProfileForm, NewCarForm
 from django.contrib.auth.decorators import login_required
 
 def index(request):
@@ -91,13 +90,15 @@ def edit_cars(request):
 
 @login_required
 def add_car(request):
+    car = Car()
     if request.method == 'POST':
-        car = Car()
         form = NewCarForm(request.POST, instance=car)
         if form.is_valid():
             print form
             print car
-    return HttpResponse("Logged out")
+    else:
+        form = NewCarForm(instance=car)
+    return render_to_response('users/add_car.html', {'form': form})
 
 def view_profile(request, profile_id):
     p = get_object_or_404(Profile, pk=profile_id)

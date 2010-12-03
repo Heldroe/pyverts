@@ -6,6 +6,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from users.models import Profile
+from cars.models import Car
 
 class SignupForm(forms.Form):
     name = forms.CharField(min_length=2, max_length=50, required=True,
@@ -83,7 +84,7 @@ class NewCarForm(ModelForm):
                         'required': 'Vous devez définir un modèle.'})
     places = forms.IntegerField(min_value=2, max_value=20, required=True,
         error_messages={'min_value': 'Le nombre de places minimal est 2.',
-                        'max_value': 'Le nombre de places maximal est 20.'
+                        'max_value': 'Le nombre de places maximal est 20.',
                         'invalid': 'Le nombre de places doit être entier.',
                         'required': 'Vous devez définir un nombre de places.'})
     consumption = forms.DecimalField(min_value=2, max_value=50, required=True,
@@ -93,7 +94,10 @@ class NewCarForm(ModelForm):
                         'min_value': 'La consommation minimale est de 2L/100km',
                         'required': 'Vous devez définir une consommation en litres par 100km'})
 
-    essence_type = 
+    types = ('Diesel', 'SP98', 'SP95', 'Super', 'Hybride', 'Solaire', 'Fusion nucléaire')
+    essence_type = forms.ChoiceField(choices=types,required=True,
+        error_messages={'required': 'Vous devez choisir un type d\'essence',
+                        'invalid_choice': 'Vous devez choisir un élément de la liste'})
     class Meta:
         model = Car
         fields = ('model', 'places', 'consumption', 'essence_type')
