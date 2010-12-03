@@ -76,3 +76,24 @@ class ProfileForm(ModelForm):
         model = Profile
         fields = ('first_name', 'last_name', 'phone', 'place')
 
+class NewCarForm(ModelForm):
+    model = forms.CharField(min_length=2, max_length=100, required=True,
+        error_messages={'min_length': 'Le nom du modèle doit faire au moins 2 caractères.',
+                        'max_length': 'Le nom du modèle ne peut pas dépasser 100 caractères.',
+                        'required': 'Vous devez définir un modèle.'})
+    places = forms.IntegerField(min_value=2, max_value=20, required=True,
+        error_messages={'min_value': 'Le nombre de places minimal est 2.',
+                        'max_value': 'Le nombre de places maximal est 20.'
+                        'invalid': 'Le nombre de places doit être entier.',
+                        'required': 'Vous devez définir un nombre de places.'})
+    consumption = forms.DecimalField(min_value=2, max_value=50, required=True,
+                                     max_digits=5,
+        error_messages={'max_digits': 'La précision de la consommation ne doit pas dépasser 5 chiffres',
+                        'max_value': 'La consommation maximale ne doit pas dépasser 50L/100km',
+                        'min_value': 'La consommation minimale est de 2L/100km',
+                        'required': 'Vous devez définir une consommation en litres par 100km'})
+
+    essence_type = 
+    class Meta:
+        model = Car
+        fields = ('model', 'places', 'consumption', 'essence_type')

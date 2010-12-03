@@ -6,5 +6,7 @@
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Envoyer" />
+    <br />
+    <a href="/users/edit_cars">Editer vos voitures</a>
   </form>
 {% endblock %}

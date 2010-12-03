@@ -10,5 +10,5 @@ urlpatterns = patterns('users.views',
     (r'^login/success/$', 'login_success'),
     (r'^edit_cars/$', 'edit_cars'),
     (r'^edit_cars/add/$', 'add_car'),
-    # (r'^(?P<profile_id>\d+)/$', 'view_profile'),
+    (r'^profile/(?P<profile_id>\d+)/$', 'view_profile'),
 )
