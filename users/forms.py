@@ -100,4 +100,4 @@ class NewCarForm(ModelForm):
                         'invalid_choice': 'Vous devez choisir un élément de la liste'})
     class Meta:
         model = Car
-        fields = ('model', 'places', 'consumption', 'essence_type')
+        fields = ('model', 'places', 'consumption', 'essence_type', 'accessibility')
