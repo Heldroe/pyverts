@@ -4,6 +4,22 @@
     <title>.pyVerts !</title>
   </head>
   <body>
-    {% block content %}{% endblock %}
+    <div id="header">
+      <!--<div><a href="index">Accueil</a></div>-->
+      <div>
+        <a href="connexion">S'inscrire - Se connecter</a>
+        [][loupe] Chercher un utilisateur
+      </div>
+      <div id="banniere"></div>
+    </div>
+    <div id="body">
+      {% block content %}{% endblock %}
+    </div>
+    <div id="footer">
+      <a href="plan">Plan du site</a>
+      <a href="mentions">Mentions légales</a>
+      <a href="contact">Contact</a>
+      <a href="convoiturage">Qu'est-ce que le convoiturage ?</a>
+    </div>
   </body>
 </html>
