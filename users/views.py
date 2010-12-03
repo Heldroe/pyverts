@@ -34,7 +34,9 @@ def signup(request):
             user.save()
             profile = Profile(user=user)
             profile.save()
-            return HttpResponseRedirect('success/')
+            user = authenticate(username=form.cleaned_data['name'], password=form.cleaned_data['password'])
+            login_auth(request, user)
+            return HttpResponseRedirect('/users/edit_profile/')
     else:
         form = SignupForm()
 
