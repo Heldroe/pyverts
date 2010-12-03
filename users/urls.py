@@ -9,6 +9,7 @@ urlpatterns = patterns('users.views',
     (r'^signup/success/$', 'signup_success'),
     (r'^login/success/$', 'login_success'),
     (r'^edit_cars/$', 'edit_cars'),
+    (r'^delete_car/(\d+)/$', 'delete_car'),
     (r'^edit_cars/add/$', 'add_car'),
     (r'^profile/(?P<profile_id>\d+)/$', 'view_profile'),
 )

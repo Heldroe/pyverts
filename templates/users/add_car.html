@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Ajouter une voiture</h1>
+  <form action="/users/edit_cars/add/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Ajouter" />
+    <br />
+    <a href="/users/edit_cars">Retour à la liste</a>
+  </form>
+{% endblock %}
