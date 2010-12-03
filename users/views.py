@@ -73,7 +73,6 @@ def edit_profile(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST, instance=request.user.get_profile())
         if form.is_valid():
-            print form.cleaned_data['place']
             form.save()
     else:
         form = ProfileForm(instance=request.user.get_profile())
@@ -82,3 +81,18 @@ def edit_profile(request):
             {'form': form},
             context_instance=RequestContext(request))
 
+@login_required
+def edit_cars(request):
+    cars = request.user.get_profile().cars.all()
+    return render_to_response('users/edit_cars.html',
+            {'cars': cars})
+
+@login_required
+def add_car(request):
+    if request.method == 'POST':
+        car = Car()
+        form = NewCarForm(request.POST, instance=car)
+        if form.is_valid():
+            print form
+            print car
+    return HttpResponse("Logged out")
