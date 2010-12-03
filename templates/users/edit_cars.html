@@ -5,14 +5,18 @@
   <ul>
   {% for car in cars %}
   <li>
-    {{ car.model }}
-    ({{ car.places }} places, {{ car.ess_type }}, {{ car.consumption }}L/100km)
+    <span style="font-weight:bold;font-size:16px">{{ car.model }}</span>
+    <em>({{ car.places }} places, {{ car.ess_type }}, {{ car.consumption }}L/100km)</em>
     {% if car.access %}
-      Accessibilité handicapés
+      <img src="/static/accessibility.png" alt="Accessibilité handicapés" />
     {% endif %}
     [<a href="/users/edit_cars/delete/{{ car.id }}/">Supprimer</a>]
   </li>
   {% endfor %}
   </ul>
-  <a href="/users/edit_cars/add/">Ajouter une voiture</a>
+  <a href="/users/edit_cars/add/" title="Ajouter un véhicule">
+    <img border="0" src="/static/add_vehicle.png" alt="Ajouter un véhicule" />
+  </a>
+  <br />
+  <a href="/users/edit_profile/" title="Retour au profil" style="font-size:18px;font-weight:bold">Retour à l'édition du profil</a>
 {% endblock %}
