@@ -1,4 +1,5 @@
 # Django settings for pyverts project.
+# -*- encoding: utf-8 -*-
 import os
 PROJECT_DIR = os.path.dirname(__file__)
 AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
@@ -107,3 +108,15 @@ INSTALLED_APPS = (
 )
 
 ACCOUNT_ACTIVATION_DAYS= 1
+
+
+ESSENCE_TYPES = [
+    (1, u'Diesel'),
+    (2, u'SP98'),
+    (3, u'SP95'),
+    (4, u'Super'),
+    (5, u'Hybride'),
+    (6, u'Solaire'),
+    (7, u'Fusion nucléaire'),
+    (8, u'Technologie alien'),
+]

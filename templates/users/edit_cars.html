@@ -4,7 +4,7 @@
   <h1>Vos voitures</h1>
   <ul>
   {% for car in cars %}
-    <li>{{ car.model }}</li>
+    <li>{% url users.delete_car car.id %}</li>
   {% endfor %}
   </ul>
   <a href="/users/edit_cars/add/">Ajouter une voiture</a>
