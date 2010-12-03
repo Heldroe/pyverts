@@ -7,6 +7,9 @@
   <li>
     {{ car.model }}
     ({{ car.places }} places, {{ car.ess_type }}, {{ car.consumption }}L/100km)
+    {% if car.access %}
+      Accessibilité handicapés
+    {% endif %}
     [<a href="/users/edit_cars/delete/{{ car.id }}/">Supprimer</a>]
   </li>
   {% endfor %}
