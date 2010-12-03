@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Vos voitures</h1>
+  <ul>
+  {% for car in cars %}
+    <li>{{ car.model }}</li>
+  {% endfor %}
+  </ul>
+  <a href="/users/edit_cars/add/">Ajouter une voiture</a>
+{% endblock %}
