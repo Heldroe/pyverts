@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>User registration</h1>
-  <form action="{{ url_out }}" method="post">
+  <h1>Profile edition</h1>
+  <form action="/users/edit_profile/" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Envoyer" />

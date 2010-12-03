@@ -1,12 +1,18 @@
+#-*- encoding: utf-8 -*-
+
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login as login_auth
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as login_auth
+from django.contrib.auth import logout as logout_auth
+from django.utils.datastructures import MultiValueDictKeyError
 
 from models import Profile
-from forms import SignupForm,LoginForm
+from forms import SignupForm, LoginForm, ProfileForm
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     return HttpResponse("Index file !")
@@ -34,18 +40,45 @@ def signup(request):
             context_instance=RequestContext(request))
 
 def login(request):
+    nextPage = False
+    try:
+        nextPage = request.GET['next']
+        url_out = '/users/login/?next=' + nextPage
+    except MultiValueDictKeyError:
+        url_out = '/users/login/'
+        pass
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             user = authenticate(username=form.cleaned_data['name'], password=form.cleaned_data['password'])
             login_auth(request, user)
             # Redirect to a success page.
+            if nextPage:
+                return HttpResponseRedirect(nextPage)
             return HttpResponseRedirect('success/')
-            #lol
     else:
         form = LoginForm()
 
     return render_to_response('users/login.html',
+            {'form': form, 'url_out': url_out},
+            context_instance=RequestContext(request))
+
+def logout(request):
+    logout_auth(request)
+    return HttpResponse("Logged out")
+
+
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=request.user.get_profile())
+        if form.is_valid():
+            print form.cleaned_data['place']
+            form.save()
+    else:
+        form = ProfileForm(instance=request.user.get_profile())
+
+    return render_to_response('users/edit_profile.html',
             {'form': form},
             context_instance=RequestContext(request))
 
