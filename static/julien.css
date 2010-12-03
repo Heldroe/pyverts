@@ -13,8 +13,8 @@ a {
 	margin: 0;
 	
 	padding: 7px 6px 0;
-	margin-left: 20%;
-	background: #7d7d7d url(gradient.png) repeat-x 0 -110px;
+	margin-left: 35%;
+	background: #009933 url(gradient.png) repeat-x 0 -110px;
 	line-height: 100%;
 
 	border-radius: 2em;
@@ -97,7 +97,7 @@ a {
 	padding: 0;
 	width: 185px;
 	position: absolute;
-	top: 10px;
+	
 	left: 0;
 	background: #ddd url(gradient.png) repeat-x 0 0;
 	border: solid 1px #b4b4b4;
@@ -168,6 +168,9 @@ html[xmlns] #nav {
 	background-image:url(search.png);
 	background-repeat: no-repeat;
 	
+	display: block;
+	margin-top: 5px;
+	padding-left: 20px;
 	-webkit-border-radius: 9px;
 	-moz-border-radius: 9px;
 
