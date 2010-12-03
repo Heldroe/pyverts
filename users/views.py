@@ -89,6 +89,7 @@ def edit_cars(request):
     for i in range(len(cars)):
         #cars[i].ess_type = settings.ESSENCE_TYPES[cars[i].essence_type]
         cars[i].ess_type = settings.ESSENCE_TYPES[int(cars[i].essence_type)-1][1]
+        cars[i].access = bool(cars[i].accessibility)
     return render_to_response('users/edit_cars.html',
             {'cars': cars})
 
@@ -100,7 +101,7 @@ def add_car(request):
         if form.is_valid():
             car.save()
             request.user.get_profile().cars.add(car)
-            print car.essence_type
+            print car.accessibility
             return HttpResponseRedirect('/users/edit_cars/')
     else:
         form = NewCarForm(instance=car)

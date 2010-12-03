@@ -5,3 +5,4 @@ class Car(models.Model):
   places = models.IntegerField()
   consumption = models.IntegerField()
   essence_type = models.CharField(max_length=42)
+  accessibility = models.BooleanField(default=False)

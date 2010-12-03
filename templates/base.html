@@ -8,13 +8,25 @@
   </head>
   <body>
     <div id="header">
+< HEAD
       <ul>
         <li><a href="/users/signup" title="S'inscrire">S'inscrire</a> - <a href="/users/login" title="Se connecter">Se connecter</a></li>
           <li><a href="/users/signup" title="Chercher un utilisateur">Chercher un utilisateur</a></li>
           <li>[][loupe]</li>
+      <ul id="nav">
+
+        <li><a href="inscriptionche">S'inscrire - Se connecter</a></li>
+          <li><a href="#">Chercher un utilisateur</a></li>
+          <li class="search"><input type="search" name="q" class="searchtext"  accesskey="s"></label></li>
       </ul> 
+      
+	
+	
+
+
       <div id="banniere"></div>
     </div>
+    
     <div id="body">
       {% block content %}{% endblock %}
     </div>
@@ -26,6 +38,7 @@
         <li><a href="/convoiturage" title="Qu'est-ce que le convoiturage ?"">Qu'est-ce que le convoiturage ?</a>
       </ul>
     </div>
+< HEAD
     <a href="http://www.w3.org/WAI/WCAG1AAA-Conformance"
       title="Explanation of Level Triple-A Conformance">
   <img height="32" width="88" 
