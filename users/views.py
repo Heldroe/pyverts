@@ -88,7 +88,7 @@ def edit_cars(request):
     cars = request.user.get_profile().cars.all()
     for i in range(len(cars)):
         #cars[i].ess_type = settings.ESSENCE_TYPES[cars[i].essence_type]
-        cars[i].ess_type = settings.ESSENCE_TYPES[int(cars[i].essence_type)][1]
+        cars[i].ess_type = settings.ESSENCE_TYPES[int(cars[i].essence_type)-1][1]
     return render_to_response('users/edit_cars.html',
             {'cars': cars})
 
