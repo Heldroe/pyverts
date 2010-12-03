@@ -13,10 +13,12 @@ a:hover{
 }
 #body{
   margin:10px;
-  padding:2px;
+  padding:10px;
   border: 1px solid #d9d9d9;
   background-color:#e6e6e6;
   -moz-border-radius: 5px;
+  border-radius: 5px;
+ -webkit-border-radius: 5px;
 }
 
 #banniere{
@@ -28,11 +30,14 @@ a:hover{
 	
 }
 
-#compt{
-	width: 90px;
+#libre{
+	width: 80px;
 	height:200px;
-	margin-left: 810px;
-	background-color:#000;
+	margin-left: 910px;
+	background: #009933 url(gradient.png) repeat-x 0 -110px;
+	 -moz-border-radius: 10px;
+	 border-radius: 10px;
+	 -webkit-border-radius: 9px;
 }
 
 
