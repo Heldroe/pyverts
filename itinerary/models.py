@@ -12,4 +12,4 @@ class Itinerary(models.Model):
   car = models.ForeignKey(Car)
   reserved_seats = models.IntegerField()
   itinerary_cost = models.IntegerField()
-
+#  free_place = car.place - reserved_seats - 1 - len(participant)
