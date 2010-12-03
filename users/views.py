@@ -1,15 +1,17 @@
 #-*- encoding: utf-8 -*-
-
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login as login_auth
+from models import Profile
+from cars.models import Car
+from forms import SignupForm,LoginForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_auth
 from django.contrib.auth import logout as logout_auth
 from django.utils.datastructures import MultiValueDictKeyError
-
 from models import Profile
 from forms import SignupForm, LoginForm, ProfileForm
 from django.contrib.auth.decorators import login_required
@@ -81,4 +83,8 @@ def edit_profile(request):
     return render_to_response('users/edit_profile.html',
             {'form': form},
             context_instance=RequestContext(request))
-
+            
+def view_profile(request, profile_id):
+    p = get_object_or_404(Profile, pk=profile_id)
+    
+    return render_to_response('users/profile.html', {'profile': p, 'lol' : p.cars.all()})

@@ -10,6 +10,7 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=50, default='')
     last_name = models.CharField(max_length=100, default='')
     phone = models.CharField(max_length=30, default='')
+    #place : adresse
     place = models.CharField(max_length=300, default='')
 
     karma = models.IntegerField(default=0)
