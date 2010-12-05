@@ -1,3 +1,12 @@
+TODO :
+- Régler correctement les licences (la voiture de la bannière n'est pas libre)
+- Corriger les noms des variables dans les modèles
+- Améliorer les modèles (relations entre eux)
+- Séparer les vues et les formulaires dans les applications qui correspondent :
+   - Les formulaires/vues qui touchent aux voitures dans l'app cars
+   - Les formulaires/vues qui touchent aux itinéraires dans l'app itineraries
+- Peut-être utiliser la vue fournie par django pour le login et logout
+
 Cette application web Django est sous licence GPL V3 et Creative Commons BY-SA pour le code pour les logos et documentations.
 
 Elle n'est pas terminée, certaines fonctionalités sont encore manquantes.
