@@ -6,7 +6,7 @@
   {% for car in cars %}
   <li>
     <span style="font-weight:bold;font-size:16px">{{ car.model }}</span>
-    <em>({{ car.places }} places, {{ car.ess_type }}, {{ car.consumption }}L/100km)</em>
+    <em>({{ car.seats }} places, {{ car.fuel_type }}, {{ car.consumption }}L/100km)</em>
     {% if car.access %}
       <img src="/static/accessibility.png" alt="Accessibilité handicapés" />
     {% endif %}

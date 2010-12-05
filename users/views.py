@@ -15,7 +15,7 @@ from django.utils.datastructures import MultiValueDictKeyError
 from models import Profile
 from forms import SignupForm, LoginForm, ProfileForm, NewCarForm, NewItineraryForm
 from django.contrib.auth.decorators import login_required
-from itinerary.models import Itinerary
+from itineraries.models import Itinerary
 
 def index(request):
     return HttpResponse("Index file !")
@@ -91,7 +91,7 @@ def edit_cars(request):
     cars = request.user.get_profile().cars.all()
     for i in range(len(cars)):
         #cars[i].ess_type = settings.ESSENCE_TYPES[cars[i].essence_type]
-        cars[i].ess_type = settings.ESSENCE_TYPES[int(cars[i].essence_type)-1][1]
+        cars[i].fuel_type = settings.ESSENCE_TYPES[int(cars[i].fuel_type)-1][1]
         cars[i].access = bool(cars[i].accessibility)
     return render_to_response('users/edit_cars.html',
             {'cars': cars})
