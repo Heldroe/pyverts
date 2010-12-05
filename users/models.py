@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from itinerary.models import Itinerary
-from evaluation.models import Evaluation
+from itineraries.models import Itinerary
+from evaluations.models import Evaluation
 from cars.models import Car
 
 class Profile(models.Model):

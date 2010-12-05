@@ -9,7 +9,7 @@ urlpatterns = patterns('django.views.generic.simple',
     # Example:
     # (r'^pyverts/', include('pyverts.foo.urls')),
     (r'^users/', include('users.urls')),
-    (r'^itinerary/', include('itinerary.urls')),
+    (r'^itineraries/', include('itineraries.urls')),
     (r'^$', 'direct_to_template', {'template': 'index.html'}),
     (r'^plan/', 'direct_to_template', {'template': 'plan.html'}),
     (r'^mentions/', 'direct_to_template', {'template': 'mentions_legales.html'}),
