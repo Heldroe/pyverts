@@ -3,7 +3,7 @@
 {% block content %}
   <h1>Description de l'itinéraire</h1>
   <ul>
-    <li>Conducteur: {{itinerary.driver.username}}{% url users.profile profile_id=itinerary.driver.id  %}</li>
+    <li>Conducteur: <a href="{% url users.views.view_profile profile_id=itinerary.driver.id  %}">{{itinerary.driver.username}}</a></li>
     <li>Lieu de départ: {{itinerary.depart}}</li>
     <li>Lieu d'arrivé: {{itinerary.arrival}}</li>
     <li>Heure de départ: {{itinerary.depart_hour}}</li>
