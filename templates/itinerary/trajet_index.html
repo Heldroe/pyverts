@@ -16,7 +16,7 @@
        <td header="hour">{{itinerary.depart_hour}}</td>
        <td header="disp">{{itinerary.available_seats}}</td>
        <td header="cost">{{itinerary.itinerary_cost}}</td>
-       <td header="link"><a href="sheet_itinerary/{{itinerary.id}}">Accéder à la fiche{{itinerary.id}}</a></td>
+       <td header="link"><a href="{{itinerary.id}}/view">Accéder à la fiche{{itinerary.id}}</a></td>
        </tr>
 {% endfor %}
 </tbody>
