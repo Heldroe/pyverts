@@ -5,11 +5,22 @@
     <title>.pyVerts !</title>
     <link rel="stylesheet" media="screen" type="text/css" title="style" href="/static/julien.css"/>
     <link rel="stylesheet" media="screen" type="text/css" title="style" href="/static/guy.css"/>
+    <script type="text/javascript" src="/static/jquery.js"></script>
+    <script type="text/javascript">
+      var nbr = 0;
+      $(document).ready(function() {
+          setInterval(updateNumber,10);
+      });
+      function updateNumber() {
+        nbr = Math.floor($('#number').html());
+        $('#number').html(nbr+1);
+      }
+    </script>
   </head>
   <body>
     <div id="header">
     <div id="compt">
-    <h1>Performance collective en réduction d'empreinte carbone: <span class="gros">345623</span></h1>
+    <h1>Performance collective en réduction d'empreinte carbone: <span class="gros" id="number">345623</span></h1>
     </div>
       <ul id="nav">
 
